@@ -1,0 +1,96 @@
+\section{}
+
+\subsection{}
+
+\subsubsection{}
+\begin{tabular}{rl}
+$C_{vl}$ & $= Delay * V_{tx}$ \\
+& $= 1.25s * 1Mbps$ \\
+& $= 1.25Mb$ \\
+\end{tabular}
+
+\subsubsection{}
+Entran $\frac{1.25Mb}{1Kb} = \frac{1250Kb}{1Kb} = 1250$ Frames
+
+\subsection{}
+
+\subsubsection{}
+$Eframe = \frac{largo de los datos}{largo de los datos} = 1$
+
+\subsubsection{}
+$Eframe = \frac{largo de los datos}{largo de los datos + 16}$
+
+\subsubsection{}
+$Eframe = \frac{largo de los datos}{largo de los datos + 8 + bits incorporados debido al stuffing}$
+
+\subsection{}
+
+\subsubsection{}
+Para el primer caso podríamos definir un frame para el emisor y otro para el receptor de la siguiente forma:
+
+Emisor: \#SEQ(1bit); Datos; Checksum
+
+Receptor: \#ACK(1bit); Checksum
+
+\subsubsection{}
+Para el segundo caso, al haber Piggybacking todos los frames pueden llegar a tener que cumplir simultáneamente los roles de emisión y recepción. Entonces proponemos un único frame como el siguiente:
+
+\#SEQ; \#ACK; Datos; Checksum
+
+\subsubsection{}
+Para el último caso, a diferencia del punto anterior tenemos reconocimento selectivo. Para estos casos se recomienda, por un tema de eficiencia, que el frame receptor reconozca los frames tanto acumulativa como individualmente. Entonces nos quedarían dos frames como los siguientes:
+
+Emisor: \#SEQ; Datos; Checksum
+
+Receptor: \#ACK; \#SACK; Checksum
+
+
+\setcounter{subsection}{4}
+\subsection{}
+
+\subsubsection{}
+\begin{tabular}{rl}
+$SWS$ & $= \frac{V_{tx} * RTT}{|Frame|}$ \\
+& $= \frac{1Mbps * 2 * 0.25s}{2Kb}$ \\
+& $= \frac{500Kb}{2Kb}$ \\
+& $= 250$ \\
+\end{tabular}
+
+$RWS = 1$
+
+\subsubsection{}
+\begin{tabular}{rl}
+$\#frames \geq SWS + RWS$ & $= \frac{V_{tx} * RTT}{|Frame|}$ \\
+& $= \frac{1Mbps * 2 * 0.25s}{2Kb} + 1$ \\
+& $= \frac{500Kb}{2Kb} + 1$ \\
+& $= 251$ \\ \\
+
+$\#frames$ & $\geq 251$ \\
+\end{tabular}
+
+Por lo tanto se necesitan $\lceil log_2(251) \rceil = 8$ bits.
+
+\subsubsection{}
+Frame: \#SEQ (8 bits); Datos (1976 bits) CRC (16 bits) (2Kb total)
+
+$20Mb$ de datos $= \lceil \frac{20000000bits}{1976bits} \rceil$ frames $= 10.122$ frames
+
+\begin{tabular}{rl}
+$Delay(10122 Frames)$ & $= Delay(10122 * 2Kb)$ \\
+& $= Delay(20122Kb)$ \\
+& $= T_{tx}(20122Kb) + T_{prop}$ \\
+& $= \frac{20122Kb}{V_{tx}} + 0.25s$ \\
+& $= \frac{20122Kb}{1Mbps} + 0.25s$ \\
+& $= 20.122s + 0.25s$ \\
+& $= 20.372s$ \\
+\end{tabular}
+
+A esto se le agrega el envío de el último frame
+
+\subsection{}
+
+\subsubsection{}
+$E_{frame} = \frac{largo de los datos}{largo total del frame} $
+
+\subsection{}
+$E_{proto} = \frac{T_{tx}(SWS)}{RTT}$
