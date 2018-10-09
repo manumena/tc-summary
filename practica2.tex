@@ -1,4 +1,4 @@
-\section{}
+\section{Práctica 2}
 
 \subsection{}
 
@@ -93,4 +93,82 @@ A esto se le agrega el envío de el último frame
 $E_{frame} = \frac{largo de los datos}{largo total del frame} $
 
 \subsection{}
-$E_{proto} = \frac{T_{tx}(SWS)}{RTT}$
+$E_{proto} = \frac{T_{tx}(V)}{RTT(F)}$
+
+\subsection{}
+\subsubsection{}
+\begin{tabular}{rl}
+$Delay(F) $ & $= T_{tx}(F) + T_{prop}$ \\
+$Delay(1Kb) $ & $= T_{tx}(1Kb) + T_{prop}$ \\
+$270$ms & $= \frac{1Kb}{1Mbps} + T_{prop}$ \\
+$270$ms & $= \frac{1}{1000}$s $+ T_{prop}$ \\
+$270$ms & $= 1$ ms $+ T_{prop}$ \\
+$269$ms & $= T_{prop}$ \\
+\end{tabular}
+
+$RTT(F) = 2 * Delay(F) = 2 * 269$ ms $= 538$ ms
+
+\begin{tabular}{rl}
+$E_{proto}$ & $= \frac{T_{tx}(V)}{RTT(F)}$ \\
+& $= \frac{T_{tx}(7 * 1Kb)}{RTT(F)}$ \\
+& $= \frac{\frac{7Kb}{1Mbps}}{538ms}$ \\
+& $= \frac{\frac{7}{1000}s}{538ms}$ \\
+& $= \frac{7ms}{538ms}$ \\
+& $=0,013$ \\
+\end{tabular}
+
+\subsubsection{}
+\begin{tabular}{rl}
+$E_{proto}$ & $= \frac{T_{tx}(V)}{RTT(F)}$ \\
+& $= \frac{T_{tx}(127 * 1Kb)}{RTT(F)}$ \\
+& $= \frac{\frac{1277Kb}{1Mbps}}{538ms}$ \\
+& $= \frac{\frac{1277}{1000}s}{538ms}$ \\
+& $= \frac{127ms}{538ms}$ \\
+& $=0,236$ \\
+\end{tabular}
+
+\subsubsection{}
+\begin{tabular}{rl}
+$E_{proto}$ & $= \frac{T_{tx}(V)}{RTT(F)}$ \\
+& $= \frac{T_{tx}(255 * 1Kb)}{RTT(F)}$ \\
+& $= \frac{\frac{2557Kb}{1Mbps}}{538ms}$ \\
+& $= \frac{\frac{2557}{1000}s}{538ms}$ \\
+& $= \frac{255ms}{538ms}$ \\
+& $=0,474$ \\
+\end{tabular}
+
+\subsection{}
+\subsubsection{}
+$RTT(F) = 2$ s
+
+\begin{tabular}{rl}
+$T_{tx}(V)$ & $= T_{tx}(8 * 2Kb)$ \\
+& $\frac{8 * 2Kb}{V_{tx}}$ \\
+& $\frac{8 * 2Kb}{10Kbps}$ \\
+& $1.6$ s \\
+\end{tabular}
+
+\begin{tabular}{rl}
+$E_{proto}$ & $= \frac{T_{tx}(V)}{RTT(F)}$ \\
+& $= \frac{1.6 s}{2 s}$ \\
+& $= 0.8$ \\
+\end{tabular}
+
+\subsubsection{}
+Recordar que se tiene un esquema de reconocimiento de acknowledge selectivo
+\begin{enumerate}
+\item Emisor envía el 4
+\item Emisor envía el 5
+\item Emisor envía el 6
+\item Emisor envía el 7
+\item Receptor recibe el 4 mal
+\item Receptor recibe el 5, envía $ACK=3$ $SACK=5$
+\item Receptor recibe el 6 mal
+\item Receptor recibe el 7, envía el $ACK=3$ $SACK=7$
+\item Emisor recibe ACK del 5, reenvía el 4
+\item Emisor recibe ACK del 7, reenvía el 6
+\item Receptor recibe el 4, envía el $ACK=5$ $SACK=4$
+\item Receptor recibe el 6, envía el $ACK=7$ $SACK=6$
+\item Emisor recibe ACK del 4
+\item Emisor recibe ACK del 6
+\end{enumerate}

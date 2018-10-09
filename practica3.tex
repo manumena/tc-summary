@@ -1,4 +1,4 @@
-\section{}
+\section{Práctica 3}
 
 \subsection{}
 
@@ -16,12 +16,47 @@ $51.2 \mu s * 10Mbps = 51.2 \mu s * 10bp \mu s = 512bits = 64B$
 Se rellena con padding. Hay dos opciones para luego descartar el padding:
 
 \begin{itemize}
-\item En el header: en lugar de usar el campo type para multiplexar se usa como length tamaño y se usa LLC como multiplexador para la capa de red.
+\item En el header: en lugar de usar el campo type para multiplexar se usa como length tamaño y se usa LLC como multiplexador para la capa de red.
 \item Se encarga la capa superior (por ejemplo IP length).
 \end{itemize}
 
 \subsubsection{}
-Ambos sensan el medio en los respectivos momentos temporales e identifican que el medio está siendo utilizado. Ergo, esperan (1-persistente) hasta que el medio esté libre y luego transmiten. Ambos encontrarán el medio libre en momentos muy cercanos (la diferencia está dada por la distancia entre H2 y H3 con H1) y sus tramas colisionarán.
+Ambos sensan el medio en los respectivos momentos temporales e identifican que el medio está siendo utilizado. Ergo, esperan (1-persistente) hasta que el medio esté libre y luego transmiten. Ambos encontrarán el medio libre en momentos muy cercanos (la diferencia está dada por la distancia entre H2 y H3 con H1) y sus tramas colisionarán.
 
 \subsubsection{}
-H4 sensa el medio. Probablemente lo encuentre libre (por ejemplo si todavía no llega a sensar la información de la trama de H1 por estar a una distancia considerable), transmita y su trama colisione con la de H1.
+H4 sensa el medio. Probablemente lo encuentre libre (por ejemplo si todavía no llega a sensar la información de la trama de H1 por estar a una distancia considerable), transmita y su trama colisione con la de H1.
+
+\setcounter{subsection}{3}
+\subsection{}
+\subsubsection{}
+El switch root es S1. Quedan bloqueados los puertos pertenecientes a L3.
+
+\subsubsection{}
+Se desbloquean los puertos pertenecientes a L3 y se bloquean los que conectan L1.
+
+\setcounter{subsection}{5}
+\subsection{}
+\subsubsection{}
+Recordar que el puerto del switch que queda disponible es el del que menor distancia al root tenga. Si empatan, queda disponible el de menor id
+\begin{tabular}{c|c}
+& H5 \\
+1001 & 2 \\
+1002 & 2 \\
+1003 & 3 \\
+1004 & 3 \\
+1005 & 2 \\
+1006 & WIFI \\
+\end{tabular}
+
+\subsubsection{}
+\begin{tabular}{c|c}
+& H5 \\
+1001 & WIFI \\
+1002 & 1 \\
+1003 & 1 \\
+1004 & 1 \\
+1005 & 1 \\
+1006 & 1 \\
+\end{tabular}
+
+\subsection{}
