@@ -1,0 +1,15 @@
+\section{Práctica 8}
+
+\setcounter{subsection}{2}
+\subsection{}
+Generalmente $CWND = IW = 2 * SMSS$ con $SMSS = 2KB$ y $SSTHRESH = 64KB$
+
+\subsection{}
+Ante un timeout se modifican $CWND = LW = SMSS = 2KB$ y $SSTHRESH = max(FLIGHT\_SIZE / 2, 2 * SMSS)$
+
+\subsection{}
+Porque de esa forma sería casi seguro que se generara congestión. 
+
+\subsection{}
+Debe incrementarse un $SMSS$ por $RTT$ durante Congestion Avoidance.
+

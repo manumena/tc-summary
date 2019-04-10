@@ -1,0 +1,75 @@
+\section{}
+
+\setcounter{subsection}{1}
+\subsection{}
+\subsubsection{}
+Dependiendo de la version el formato del header es distinto, por lo que no saber que version es puede provocar no poder leer correctamente los campos.
+
+\setcounter{subsubsection}{2}
+\subsubsection{}
+El tamaño máximo de un paquete IP es 65535 bytes. El campo lenght define este tamaño.
+
+\subsection{}
+\subsubsection{}
+Tiene 3 interfaces: FastEthernet, Wireless0 Connection y Wirless1 Connection
+
+\subsubsection{}
+\begin{itemize}
+\item Physical Address es la dirección MAC
+\item IP Address es la direccion IP
+\item Subnet Mask es la máscara de subred que se aplica
+\item Default Gateway es el router por defecto
+\end{itemize}
+
+\subsection{}
+\subsubsection{}
+Es solo pasar los /N a XXX.XXX.XXX.XXX
+
+/22 = 255.255.252.0
+
+/23 = 255.255.254.0
+
+/24 = 255.255.255.0
+
+/25 = 255.255.255.127
+
+\subsubsection{}
+135.46.56.0/22 = 135.46. 0011 1000 .0 / 255.255.252.1111 1100 = 135.46.56.0
+
+Capacidad máxima de hosts esta dada por /22, son todos las direcciones que podemos meter sobre los 10 digitos que la máscara anula. Osea $2^{10} = 1024$ hosts.
+
+\subsubsection{}
+\begin{tabular}{|c|c|c|}
+\hline
+& A & B \\ \hline
+135.46.57.14 & Interface1 & descarta \\ \hline
+135.46.63.10 & Interface0 & descarta \\ \hline
+135.46.52.2 & 135.46.62.100 & descarta \\ \hline
+208.70.188.15 & 135.46.62.100 & descarta \\ \hline
+135.46.62.62 & Interface0 & descarta \\ \hline 
+192.53.40.7 & 135.46.60.100 & Interface1 \\ \hline 
+192.53.56.7 & 135.46.62.100 & descarta \\ \hline 
+\end{tabular}
+
+\subsection{}
+PC1: 172.16.5.
+
+\subsection{}
+\subsubsection{}
+Pueden direccionarse 256 - 2 hosts.
+
+\subsubsection{}
+2 subredes: 128 - 2 hosts.
+
+4 subredes: 64 - 2 hosts.
+
+8 subredes: 32 - 2 hosts.
+
+\subsection{}
+\subsubsection{}
+Red A: 172.16.5.0/27 (32)
+
+Red B: 172.16.5.32/29 (8) Dejo 8 porque se necesitan 1 host + 2 routers + 2 de broadcast y localhost
+
+Red C: No puedo usar 15.16.5.40/27 (128) porque se solaparía con 17.16.5.64/22 que ya existe
+

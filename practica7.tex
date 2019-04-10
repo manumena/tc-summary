@@ -1,0 +1,62 @@
+\section{Práctica 7}
+
+\subsection{}
+\subsubsection{}
+Uno solo
+
+\subsubsection{}
+Una sola
+
+\subsubsection{}
+Uno solo
+
+\subsubsection{}
+También uno. El servidor tiene un puerto abierto para atender a cada cliente que haga un pedido. Una vez atendido abre otro puerto y le comunica al cliente que a partir de ahora lo va a se comunican por ese otro puerto.
+
+\subsection{}
+\subsubsection{}
+GET / HTTP 1.1 Host: dc.uba.ar
+
+\subsubsection{}
+HEAD /tdc HTTP 1.1 Host: dc.uba.ar
+
+\subsubsection{}
+GET IF-MODIFIED-SINCE *unafecha* /logo.jpg HTTP 1.1 Host: www.dc.uba.ar
+
+\subsection{}
+\subsubsection{}
+HTTP 1.0
+-> [syn]
+<- [syn+ack]
+-> [ack] + GET index HTTP 1.0
+<- [fin] 200 OK  *index*
+-> [fin+ack]
+<- [ack]
+
+En total lo de arriba son 3 RTT. Se repite lo de arriba para:
+\begin{itemize}
+\item style.css
+\item searchline.png
+\item home.png
+\item search\_icon.gif
+\end{itemize}
+Luego, en total son 5*3 = 15 RTT
+
+\subsubsection{}
+$-> [syn]$
+$<- [syn+ack]$
+$-> [ack] + GET index HTTP 1.1$
+$<- 200 OK  *index*$
+$-> GET style.css HTTP 1.1$
+$<- 200 OK  *style.css*$
+$-> GET searchline.png HTTP 1.1$
+$<- 200 OK  *searchline.png*$
+$-> GET home.png HTTP 1.1$
+$<- 200 OK  *home.png*$
+$-> GET search_icon.gif HTTP 1.1$
+$<- 200 OK  *search_icon.gif*$
+$-> [fin]$
+$<- [fin+ack]$
+$-> [ack]$
+
+En total son 7,5 RTT.
